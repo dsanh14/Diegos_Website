@@ -1,8 +1,19 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import '@/styles/globals.css'
 import Layout from '@/components/Layout'
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+  ],
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL('https://diegosanchez.dev'),
   title: {
     default: 'Diego Sanchez | Software Engineer',
     template: '%s | Diego Sanchez'
@@ -34,15 +45,6 @@ export const metadata: Metadata = {
     creator: '@diegosanchez',
     images: ['/og-image.jpg'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
-  ],
   robots: {
     index: true,
     follow: true,
