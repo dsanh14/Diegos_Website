@@ -1,3 +1,5 @@
+'use client';
+
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
@@ -8,14 +10,16 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <div className="min-h-screen">
       <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   )
 } 
