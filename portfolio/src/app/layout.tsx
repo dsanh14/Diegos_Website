@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import '../styles/globals.css'
-import Background from '@/components/Background'
 
 export const metadata: Metadata = {
   title: 'Diego Sanchez | Software Engineer',
@@ -39,8 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth antialiased" suppressHydrationWarning>
-      <body className="min-h-screen font-sans selection:bg-violet-500/20 selection:text-violet-900 dark:selection:bg-violet-500/20 dark:selection:text-violet-200">
-        <Background />
+      <body className="min-h-screen bg-white dark:bg-stone-950 text-stone-950 dark:text-stone-50">
         {children}
       </body>
     </html>
