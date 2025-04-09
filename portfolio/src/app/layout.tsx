@@ -7,7 +7,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
     { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
   ],
 }
@@ -85,7 +85,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white antialiased font-sans selection:bg-blue-100 dark:selection:bg-blue-900">
+      <body className="min-h-screen bg-white dark:bg-slate-900 text-gray-800 dark:text-slate-100 antialiased font-sans selection:bg-blue-100 dark:selection:bg-blue-900">
         <Layout>{children}</Layout>
       </body>
     </html>

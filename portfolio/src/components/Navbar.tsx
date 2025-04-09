@@ -24,10 +24,6 @@ export default function Navbar() {
     }
   }, [isDark, mounted])
 
-  const toggleDarkMode = () => {
-    setIsDark(!isDark)
-  }
-
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
@@ -36,7 +32,7 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-900/80">
+    <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-8">
@@ -44,10 +40,10 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                className={`text-sm font-medium transition-colors hover:text-blue-500 ${
                   pathname === item.path
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : 'text-gray-600 dark:text-gray-300'
+                    ? 'text-blue-500 dark:text-blue-400'
+                    : 'text-gray-800 dark:text-slate-100'
                 }`}
               >
                 {item.name}
@@ -55,8 +51,8 @@ export default function Navbar() {
             ))}
           </div>
           <button
-            onClick={toggleDarkMode}
-            className="rounded-lg p-2 text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+            onClick={() => setIsDark(!isDark)}
+            className="rounded-lg p-2 text-gray-800 hover:bg-gray-100 dark:text-slate-100 dark:hover:bg-slate-800"
             aria-label="Toggle dark mode"
           >
             {mounted && (
