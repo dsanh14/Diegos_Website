@@ -8,10 +8,18 @@ export default function Navbar() {
   const pathname = usePathname()
   const [mounted, setMounted] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     setMounted(true)
     setIsDark(document.documentElement.classList.contains('dark'))
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
@@ -32,7 +40,11 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/80">
+    <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+      isScrolled 
+        ? 'border-gray-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-900/80' 
+        : 'border-transparent bg-white dark:bg-slate-900'
+    }`}>
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-8">
@@ -40,11 +52,11 @@ export default function Navbar() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                className={`relative text-sm font-medium transition-all duration-300 hover:text-blue-500 ${
                   pathname === item.path
                     ? 'text-blue-500 dark:text-blue-400'
                     : 'text-gray-800 dark:text-slate-100'
-                }`}
+                } after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full dark:after:bg-blue-400`}
               >
                 {item.name}
               </Link>
@@ -52,12 +64,12 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setIsDark(!isDark)}
-            className="rounded-lg p-2 text-gray-800 hover:bg-gray-100 dark:text-slate-100 dark:hover:bg-slate-800"
+            className="rounded-lg p-2 text-gray-800 transition-all duration-300 hover:bg-gray-100 hover:rotate-12 dark:text-slate-100 dark:hover:bg-slate-800"
             aria-label="Toggle dark mode"
           >
             {mounted && (
               <svg
-                className="h-5 w-5"
+                className="h-5 w-5 transition-transform duration-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
