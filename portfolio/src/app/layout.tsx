@@ -1,3 +1,5 @@
+'use client'
+
 import { Metadata } from 'next'
 import '../styles/globals.css'
 
@@ -26,8 +28,8 @@ export const metadata: Metadata = {
     maximumScale: 1,
   },
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
 }
 
@@ -38,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth antialiased" suppressHydrationWarning>
-      <body className="min-h-screen bg-white dark:bg-stone-950 text-stone-950 dark:text-stone-50">
+      <body className="min-h-screen bg-white dark:bg-black text-black dark:text-white">
         {children}
       </body>
     </html>
