@@ -1,0 +1,56 @@
+import { motion } from 'framer-motion'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+
+interface ProjectCardProps {
+  title: string
+  description: string
+  technologies: string[]
+  imageUrl: string
+  projectUrl: string
+}
+
+export default function ProjectCard({
+  title,
+  description,
+  technologies,
+  imageUrl,
+  projectUrl,
+}: ProjectCardProps) {
+  return (
+    <motion.div
+      whileHover={{ y: -5 }}
+      className="glass-effect rounded-lg overflow-hidden hover-scale"
+    >
+      <div className="relative h-48">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <p className="text-gray-400 mb-4">{description}</p>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 text-sm rounded-full bg-gray-800 text-gray-300"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+        <a
+          href={projectUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-blue-400 hover:text-blue-300"
+        >
+          View Project
+          <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
+        </a>
+      </div>
+    </motion.div>
+  )
+} 
