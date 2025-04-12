@@ -18,38 +18,46 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <motion.div
-      whileHover={{ y: -5 }}
-      className="glass-effect rounded-lg overflow-hidden hover-scale"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="glass-effect glass-effect-hover rounded-lg overflow-hidden"
     >
-      <div className="relative h-48">
-        <img
+      <div className="relative h-48 overflow-hidden group">
+        <motion.img
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.3 }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-400 mb-4">{description}</p>
+        <h3 className="text-xl font-bold mb-2 text-gradient">{title}</h3>
+        <p className="text-gray-400 mb-4 leading-relaxed">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech) => (
-            <span
+            <motion.span
               key={tech}
-              className="px-3 py-1 text-sm rounded-full bg-gray-800 text-gray-300"
+              whileHover={{ scale: 1.05 }}
+              className="px-3 py-1 text-sm rounded-full bg-gray-800/50 text-gray-300 border border-gray-700"
             >
               {tech}
-            </span>
+            </motion.span>
           ))}
         </div>
-        <a
+        <motion.a
           href={projectUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-blue-400 hover:text-blue-300"
+          className="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors"
+          whileHover={{ x: 5 }}
         >
           View Project
           <ArrowTopRightOnSquareIcon className="w-4 h-4 ml-2" />
-        </a>
+        </motion.a>
       </div>
     </motion.div>
   )

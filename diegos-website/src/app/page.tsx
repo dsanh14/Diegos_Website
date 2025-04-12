@@ -1,5 +1,53 @@
 import { motion } from 'framer-motion'
 import { ArrowDownIcon } from '@heroicons/react/24/outline'
+import ProjectCard from '@/components/ProjectCard'
+import SkillItem from '@/components/SkillItem'
+import {
+  CodeBracketIcon,
+  CommandLineIcon,
+  CpuChipIcon,
+  ServerIcon,
+} from '@heroicons/react/24/outline'
+
+const projects = [
+  {
+    title: 'Project 1',
+    description: 'A modern web application built with Next.js and TypeScript.',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    imageUrl: '/project1.jpg',
+    projectUrl: 'https://github.com/yourusername/project1',
+  },
+  {
+    title: 'Project 2',
+    description: 'A RESTful API service with Node.js and Express.',
+    technologies: ['Node.js', 'Express', 'MongoDB'],
+    imageUrl: '/project2.jpg',
+    projectUrl: 'https://github.com/yourusername/project2',
+  },
+]
+
+const skills = [
+  {
+    name: 'Frontend Development',
+    icon: <CodeBracketIcon className="w-8 h-8" />,
+    level: 90,
+  },
+  {
+    name: 'Backend Development',
+    icon: <ServerIcon className="w-8 h-8" />,
+    level: 85,
+  },
+  {
+    name: 'DevOps',
+    icon: <CommandLineIcon className="w-8 h-8" />,
+    level: 75,
+  },
+  {
+    name: 'System Design',
+    icon: <CpuChipIcon className="w-8 h-8" />,
+    level: 80,
+  },
+]
 
 export default function Home() {
   return (
@@ -47,7 +95,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-8 text-gradient">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Project cards will go here */}
+            {projects.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
           </div>
         </div>
       </section>
@@ -56,8 +106,10 @@ export default function Home() {
       <section className="min-h-screen py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-8 text-gradient">Skills</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Skill items will go here */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {skills.map((skill) => (
+              <SkillItem key={skill.name} {...skill} />
+            ))}
           </div>
         </div>
       </section>
@@ -67,7 +119,34 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-8 text-gradient">Contact</h2>
           <div className="glass-effect p-8 rounded-lg">
-            {/* Contact form will go here */}
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-gray-300"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  className="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-gray-300"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white"
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </section>

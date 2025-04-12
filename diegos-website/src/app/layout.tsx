@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"] });
+const geist = Geist({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist",
+  adjustFontFallback: false,
+});
 
 export const metadata: Metadata = {
   title: "Diego Sanchez | Software Engineer",
@@ -36,9 +41,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${geist.className} min-h-screen antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body suppressHydrationWarning className={`${geist.variable} min-h-screen antialiased font-sans`}>
+        <div id="root">{children}</div>
       </body>
     </html>
   );
