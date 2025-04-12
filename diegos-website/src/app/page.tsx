@@ -14,14 +14,14 @@ const projects = [
     title: 'Project 1',
     description: 'A modern web application built with Next.js and TypeScript.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    imageUrl: '/project1.jpg',
+    imageUrl: '/next.svg',
     projectUrl: 'https://github.com/yourusername/project1',
   },
   {
     title: 'Project 2',
     description: 'A RESTful API service with Node.js and Express.',
     technologies: ['Node.js', 'Express', 'MongoDB'],
-    imageUrl: '/project2.jpg',
+    imageUrl: '/vercel.svg',
     projectUrl: 'https://github.com/yourusername/project2',
   },
 ]

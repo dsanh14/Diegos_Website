@@ -1,47 +1,45 @@
 import { motion } from 'framer-motion'
+import { IconType } from 'react-icons'
 
 interface SkillItemProps {
   name: string
-  icon: React.ReactNode
+  icon: IconType
   level: number
 }
 
-export default function SkillItem({ name, icon, level }: SkillItemProps) {
+export default function SkillItem({ name, icon: Icon, level }: SkillItemProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      whileHover={{ scale: 1.02 }}
-      className="glass-effect glass-effect-hover p-6 rounded-lg text-center"
+      className="glass-effect glass-effect-hover rounded-lg p-4 flex flex-col gap-3"
     >
-      <motion.div
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ type: 'spring', stiffness: 300 }}
-        className="mb-4 text-indigo-400"
-      >
-        {icon}
-      </motion.div>
-      <h3 className="text-lg font-semibold mb-4 text-gradient">{name}</h3>
+      <div className="flex items-center gap-3">
+        <Icon className="w-6 h-6 text-stone-600 dark:text-stone-300" />
+        <h3 className="text-lg font-light text-stone-700 dark:text-stone-200">{name}</h3>
+      </div>
+      
       <div className="progress-bar">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="progress-bar-fill"
         />
       </div>
-      <motion.div
+      
+      <motion.span
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
-        className="mt-2 text-sm text-gray-400"
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-sm font-light text-stone-500 dark:text-stone-400 self-end"
       >
         {level}%
-      </motion.div>
+      </motion.span>
     </motion.div>
   )
 } 

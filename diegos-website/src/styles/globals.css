@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+code, pre {
+  font-family: 'Geist Mono', monospace;
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20;
+  }
+
+  .glass-effect-hover {
+    @apply transition-all duration-300 hover:bg-white/20 hover:border-white/30;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-stone-800 to-stone-500 dark:from-stone-200 dark:to-stone-400;
+  }
+
+  .progress-bar {
+    @apply w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden;
+  }
+
+  .progress-bar-fill {
+    @apply h-full bg-gradient-to-r from-stone-600 to-stone-400 dark:from-stone-400 dark:to-stone-200;
+  }
+
+  .section-title {
+    @apply text-3xl font-light mb-8 text-gradient tracking-tight;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+} 
